@@ -14,8 +14,6 @@ if __name__ == '__main__':
     elif args.task == 'transfer':
         config = load_yaml(osp.join('configurations_morpher', 'transfer_from_' + args.source + '_to_' + args.dataset_name + '_' + args.pretrain_method + '_' + args.gnn_type + '.yaml'))
 
-
-    torch.use_deterministic_algorithms(True)
     seed_torch(config.seed)
     torch.cuda.set_device('cuda:'+ str(args.device) if torch.cuda.is_available() else 'cpu')
     # Load pre-trained model tokenizer (vocabulary)

@@ -22,10 +22,18 @@ pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv -
 pip install transformers scikit-learn yacs pytorch_lightning
 ```
 
+Alternatively, we provide a docker image violet24k/morpher:latest on DockerHub. You can pull and run the docker image by
+```sh
+docker pull violet24k/morpher:latest
+docker run --gpus all -it -v .:/workspace violet24k/morpher:latest bash
+```
+
 ### Quick Start
 [morpher.py](code/morpher.py) is the script for running our Morpher (multimodal prompt learning for graph neural networks) method.
 [improvedaio.py](code/improvedaio.py) is the script for running our ImprovedAIO method. Our Morpher uses our ImprovedAIO for prompting graphs.
 ```sh
+# in ./code directory
+cd code
 python improvedaio.py --dataset_name MUTAG --gnn_type GCN --pretrain_method GraphCL
 python morpher.py --dataset MUTAG --gnn GCN --pretrain_method GraphCL
 ```
